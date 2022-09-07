@@ -10,9 +10,6 @@ import (
 )
 
 var zinxLogo = `=============Spica=============`
-var topLine = `┌───────────────────────────────────────────────────┐`
-var borderLine = `│`
-var bottomLine = `└───────────────────────────────────────────────────┘`
 
 //Server 接口实现，定义一个Server服务类
 type Server struct {
@@ -103,7 +100,10 @@ func (s *Server) Start() {
 
 			//3.2 设置服务器最大连接控制,如果超过最大连接，那么则关闭此新的连接
 			if s.ConnMgr.Len() >= utils.GlobalObject.MaxConn {
-				conn.Close()
+				err := conn.Close()
+				if err != nil {
+					fmt.Println("conn Close err ", err)
+				}
 				continue
 			}
 
@@ -238,11 +238,7 @@ func (s *Server) WsHandler(w http.ResponseWriter, req *http.Request) {
 
 func printLogo() {
 	fmt.Println(zinxLogo)
-	fmt.Println(topLine)
-	fmt.Println(fmt.Sprintf("%s [Github] https://github.com/aceld                 %s", borderLine, borderLine))
-	fmt.Println(fmt.Sprintf("%s [tutorial] https://www.kancloud.cn/aceld/zinx     %s", borderLine, borderLine))
-	fmt.Println(bottomLine)
-	fmt.Printf("[Zinx] Version: %s, MaxConn: %d, MaxPacketSize: %d\n",
+	fmt.Printf("Version: %s, MaxConn: %d, MaxPacketSize: %d\n",
 		utils.GlobalObject.Version,
 		utils.GlobalObject.MaxConn,
 		utils.GlobalObject.MaxPacketSize)

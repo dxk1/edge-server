@@ -7,44 +7,44 @@
 package main
 
 import (
-	"github.com/aceld/zinx/examples/zinx_server/zrouter"
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/zlog"
-	"github.com/aceld/zinx/znet"
+	"edge-server/examples/zinx_ws_server/zrouter"
+	"edge-server/log"
+	net2 "edge-server/net"
+	"edge-server/service"
 )
 
 //创建连接的时候执行
-func DoConnectionBegin(conn ziface.IConnection) {
-	zlog.Debug("DoConnecionBegin is Called ... ")
+func DoConnectionBegin(conn service.IConnection) {
+	log.Debug("DoConnecionBegin is Called ... ")
 
 	//设置两个链接属性，在连接创建之后
-	zlog.Debug("Set conn Name, Home done!")
+	log.Debug("Set conn Name, Home done!")
 	conn.SetProperty("Name", "Aceld")
 	conn.SetProperty("Home", "https://www.kancloud.cn/@aceld")
 
 	err := conn.SendMsg(2, []byte("DoConnection BEGIN..."))
 	if err != nil {
-		zlog.Error(err)
+		log.Error(err)
 	}
 }
 
 //连接断开的时候执行
-func DoConnectionLost(conn ziface.IConnection) {
+func DoConnectionLost(conn service.IConnection) {
 	//在连接销毁之前，查询conn的Name，Home属性
 	if name, err := conn.GetProperty("Name"); err == nil {
-		zlog.Error("Conn Property Name = ", name)
+		log.Error("Conn Property Name = ", name)
 	}
 
 	if home, err := conn.GetProperty("Home"); err == nil {
-		zlog.Error("Conn Property Home = ", home)
+		log.Error("Conn Property Home = ", home)
 	}
 
-	zlog.Debug("DoConneciotnLost is Called ... ")
+	log.Debug("DoConneciotnLost is Called ... ")
 }
 
 func main() {
 	//创建一个server句柄
-	s := znet.NewServer()
+	s := net2.NewServer()
 
 	//注册链接hook回调函数
 	s.SetOnConnStart(DoConnectionBegin)
