@@ -11,7 +11,7 @@ GIT_BRANCH=$(git name-rev --name-only HEAD)
 GO_VERSION=$(go version)
 
 
-go build -ldflags " \
+GOARCH=amd64 GOOS=linux go build -ldflags " \
 	-X 'main.AppName=${APP_NAME}' 			\
 	-X 'main.AppVersion=${APP_VERSION}'     \
 	-X 'main.BuildVersion=${BUILD_VERSION//\'/_}' \
