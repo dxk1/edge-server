@@ -2,10 +2,10 @@ package net
 
 import (
 	"context"
-	"edge-server/service"
-	"edge-server/utils"
 	"errors"
 	"fmt"
+	"github.com/dxk1/edge-server/service"
+	"github.com/dxk1/edge-server/utils"
 	"github.com/gorilla/websocket"
 	"io"
 	"net"

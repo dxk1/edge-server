@@ -1,9 +1,9 @@
 package net
 
 import (
-	"edge-server/service"
-	"edge-server/utils"
 	"fmt"
+	"github.com/dxk1/edge-server/service"
+	"github.com/dxk1/edge-server/utils"
 	"github.com/gorilla/websocket"
 	"net"
 	"net/http"

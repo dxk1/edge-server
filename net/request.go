@@ -1,7 +1,7 @@
 package net
 
 import (
-	"edge-server/service"
+	"github.com/dxk1/edge-server/service"
 )
 
 //Request 请求

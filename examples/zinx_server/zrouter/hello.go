@@ -1,9 +1,9 @@
 package zrouter
 
 import (
-	"edge-server/log"
-	"edge-server/net"
-	"edge-server/service"
+	"github.com/dxk1/edge-server/log"
+	"github.com/dxk1/edge-server/net"
+	"github.com/dxk1/edge-server/service"
 )
 
 type HelloZinxRouter struct {
