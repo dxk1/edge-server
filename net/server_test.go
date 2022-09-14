@@ -1,8 +1,8 @@
 package net
 
 import (
+	"edge-server/service"
 	"fmt"
-	"github.com/dxk1/edge-server/service"
 	"io"
 	"net"
 	"sync"

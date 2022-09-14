@@ -7,7 +7,7 @@ import (
 	"net"
 	"time"
 
-	net2 "github.com/dxk1/edge-server/net"
+	net2 "edge-server/net"
 )
 
 /*

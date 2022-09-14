@@ -2,12 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/aceld/zinx/znet"
 	"io"
 	"net"
 	"time"
 
-	net2 "github.com/dxk1/edge-server/net"
+	net2 "edge-server/net"
 )
 
 /*
@@ -28,7 +27,7 @@ func main() {
 	for {
 		//发封包message消息
 		dp := net2.NewDataPack()
-		msg, _ := dp.Pack(znet.NewMsgPackage(0, []byte("Zinx V0.8 Client0 Test Message")))
+		msg, _ := dp.Pack(net2.NewMsgPackage(0, []byte("Zinx V0.8 Client0 Test Message")))
 		_, err := conn.Write(msg)
 		if err != nil {
 			fmt.Println("write error err ", err)
@@ -51,7 +50,7 @@ func main() {
 
 		if msgHead.GetDataLen() > 0 {
 			//msg 是有data数据的，需要再次读取data数据
-			msg := msgHead.(*znet.Message)
+			msg := msgHead.(*net2.Message)
 			msg.Data = make([]byte, msg.GetDataLen())
 
 			//根据dataLen从io中读取字节流

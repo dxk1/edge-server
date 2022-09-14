@@ -1,19 +1,18 @@
 package main
 
 import (
+	net2 "edge-server/net"
+	"edge-server/service"
 	"fmt"
-
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/znet"
 )
 
 //ping test 自定义路由
 type PingRouter struct {
-	znet.BaseRouter
+	net2.BaseRouter
 }
 
 //Test PreHandle
-func (this *PingRouter) PreHandle(request ziface.IRequest) {
+func (this *PingRouter) PreHandle(request service.IRequest) {
 	fmt.Println("Call Router PreHandle")
 	_, err := request.GetConnection().GetTCPConnection().Write([]byte("before ping ....\n"))
 	if err != nil {
@@ -22,7 +21,7 @@ func (this *PingRouter) PreHandle(request ziface.IRequest) {
 }
 
 //Test Handle
-func (this *PingRouter) Handle(request ziface.IRequest) {
+func (this *PingRouter) Handle(request service.IRequest) {
 	fmt.Println("Call PingRouter Handle")
 	_, err := request.GetConnection().GetTCPConnection().Write([]byte("ping...ping...ping\n"))
 	if err != nil {
@@ -31,7 +30,7 @@ func (this *PingRouter) Handle(request ziface.IRequest) {
 }
 
 //Test PostHandle
-func (this *PingRouter) PostHandle(request ziface.IRequest) {
+func (this *PingRouter) PostHandle(request service.IRequest) {
 	fmt.Println("Call Router PostHandle")
 	_, err := request.GetConnection().GetTCPConnection().Write([]byte("After ping .....\n"))
 	if err != nil {
@@ -41,7 +40,7 @@ func (this *PingRouter) PostHandle(request ziface.IRequest) {
 
 func main() {
 	//创建一个server句柄
-	s := znet.NewServer()
+	s := net2.NewServer()
 
 	//配置路由
 	// s.AddRouter(&PingRouter{})

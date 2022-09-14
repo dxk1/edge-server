@@ -1,9 +1,9 @@
 package net
 
 import (
+	"edge-server/service"
+	"edge-server/utils"
 	"fmt"
-	"github.com/dxk1/edge-server/service"
-	"github.com/dxk1/edge-server/utils"
 	"strconv"
 )
 
@@ -54,7 +54,7 @@ func (mh *MsgHandle) DoMsgHandler(request service.IRequest) {
 func (mh *MsgHandle) AddRouter(msgID uint32, router service.IRouter) {
 	//1 判断当前msg绑定的API处理方法是否已经存在
 	if _, ok := mh.Apis[msgID]; ok {
-		panic("repeated api , msgID = " + strconv.Itoa(int(msgID)))
+		panic(strconv.Itoa(int(msgID)) + "repeated api , msgID = ")
 	}
 	//2 添加msg与api的绑定关系
 	mh.Apis[msgID] = router

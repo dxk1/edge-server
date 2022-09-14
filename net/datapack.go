@@ -2,10 +2,10 @@ package net
 
 import (
 	"bytes"
+	"edge-server/service"
+	"edge-server/utils"
 	"encoding/binary"
 	"errors"
-	"github.com/dxk1/edge-server/service"
-	"github.com/dxk1/edge-server/utils"
 )
 
 var defaultHeaderLen uint32 = 8

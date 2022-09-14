@@ -1,8 +1,8 @@
 package main
 
 import (
+	net2 "edge-server/net"
 	"fmt"
-	net2 "github.com/dxk1/edge-server/net"
 	"net"
 )
 

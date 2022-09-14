@@ -1,19 +1,18 @@
 package main
 
 import (
+	net2 "edge-server/net"
+	"edge-server/service"
 	"fmt"
-
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/znet"
 )
 
 //ping test 自定义路由
 type PingRouter struct {
-	znet.BaseRouter
+	net2.BaseRouter
 }
 
 //Test Handle
-func (this *PingRouter) Handle(request ziface.IRequest) {
+func (this *PingRouter) Handle(request service.IRequest) {
 	fmt.Println("Call PingRouter Handle")
 	//先读取客户端的数据，再回写ping...ping...ping
 	fmt.Println("recv from client : msgId=", request.GetMsgID(), ", data=", string(request.GetData()))
@@ -33,7 +32,7 @@ func (this *PingRouter) Handle(request ziface.IRequest) {
 
 func main() {
 	//创建一个server句柄
-	s := znet.NewServer()
+	s := net2.NewServer()
 
 	//配置路由
 	s.AddRouter(5, &PingRouter{})

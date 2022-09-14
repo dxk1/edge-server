@@ -1,18 +1,18 @@
 package main
 
 import (
+	net2 "edge-server/net"
+	"edge-server/service"
 	"fmt"
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/znet"
 )
 
 //ping test 自定义路由
 type PingRouter struct {
-	znet.BaseRouter
+	net2.BaseRouter
 }
 
 //Ping Handle
-func (this *PingRouter) Handle(request ziface.IRequest) {
+func (this *PingRouter) Handle(request service.IRequest) {
 	fmt.Println("Call PingRouter Handle")
 	//先读取客户端的数据，再回写ping...ping...ping
 	fmt.Println("recv from client : msgId=", request.GetMsgID(), ", data=", string(request.GetData()))
@@ -24,11 +24,11 @@ func (this *PingRouter) Handle(request ziface.IRequest) {
 }
 
 type HelloZinxRouter struct {
-	znet.BaseRouter
+	net2.BaseRouter
 }
 
 //HelloZinxRouter Handle
-func (this *HelloZinxRouter) Handle(request ziface.IRequest) {
+func (this *HelloZinxRouter) Handle(request service.IRequest) {
 	fmt.Println("Call HelloZinxRouter Handle")
 	//先读取客户端的数据，再回写ping...ping...ping
 	fmt.Println("recv from client : msgId=", request.GetMsgID(), ", data=", string(request.GetData()))
@@ -40,7 +40,7 @@ func (this *HelloZinxRouter) Handle(request ziface.IRequest) {
 }
 
 //创建连接的时候执行
-func DoConnectionBegin(conn ziface.IConnection) {
+func DoConnectionBegin(conn service.IConnection) {
 	fmt.Println("DoConnecionBegin is Called ... ")
 	err := conn.SendMsg(2, []byte("DoConnection BEGIN..."))
 	if err != nil {
@@ -49,13 +49,13 @@ func DoConnectionBegin(conn ziface.IConnection) {
 }
 
 //连接断开的时候执行
-func DoConnectionLost(conn ziface.IConnection) {
+func DoConnectionLost(conn service.IConnection) {
 	fmt.Println("DoConneciotnLost is Called ... ")
 }
 
 func main() {
 	//创建一个server句柄
-	s := znet.NewServer()
+	s := net2.NewServer()
 
 	//注册链接hook回调函数
 	s.SetOnConnStart(DoConnectionBegin)

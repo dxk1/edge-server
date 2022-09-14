@@ -7,10 +7,10 @@
 package main
 
 import (
-	"github.com/dxk1/edge-server/examples/zinx_ws_server/zrouter"
-	"github.com/dxk1/edge-server/log"
-	net2 "github.com/dxk1/edge-server/net"
-	"github.com/dxk1/edge-server/service"
+	"edge-server/examples/zinx_ws_server/zrouter"
+	"edge-server/log"
+	net2 "edge-server/net"
+	"edge-server/service"
 )
 
 //创建连接的时候执行
