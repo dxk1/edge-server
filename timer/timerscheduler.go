@@ -10,11 +10,10 @@ package ztimer
  */
 
 import (
+	"edge-server/log"
 	"math"
 	"sync"
 	"time"
-
-	"github.com/aceld/zinx/zlog"
 )
 
 const (
@@ -107,7 +106,7 @@ func (ts *TimerScheduler) Start() {
 			for _, timer := range timerList {
 				if math.Abs(float64(now-timer.unixts)) > MaxTimeDelay {
 					//已经超时的定时器，报警
-					zlog.Error("want call at ", timer.unixts, "; real call at", now, "; delay ", now-timer.unixts)
+					log.Error("want call at ", timer.unixts, "; real call at", now, "; delay ", now-timer.unixts)
 				}
 				ts.triggerChan <- timer.delayFunc
 			}

@@ -10,12 +10,11 @@
 package utils
 
 import (
+	"edge-server/log"
+	"edge-server/service"
 	"encoding/json"
 	"io/ioutil"
 	"os"
-
-	"github.com/aceld/zinx/ziface"
-	"github.com/aceld/zinx/zlog"
 )
 
 /*
@@ -26,10 +25,10 @@ type GlobalObj struct {
 	/*
 		Server
 	*/
-	TCPServer ziface.IServer //当前Zinx的全局Server对象
-	Host      string         //当前服务器主机IP
-	TCPPort   int            //当前服务器主机监听端口号
-	Name      string         //当前服务器名称
+	TCPServer service.IServer //当前Zinx的全局Server对象
+	Host      string          //当前服务器主机IP
+	TCPPort   int             //当前服务器主机监听端口号
+	Name      string          //当前服务器名称
 
 	/*
 		Zinx
@@ -91,10 +90,10 @@ func (g *GlobalObj) Reload() {
 
 	//Logger 设置
 	if g.LogFile != "" {
-		zlog.SetLogFile(g.LogDir, g.LogFile)
+		log.SetLogFile(g.LogDir, g.LogFile)
 	}
 	if g.LogDebugClose == true {
-		zlog.CloseDebug()
+		log.CloseDebug()
 	}
 }
 

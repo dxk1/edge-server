@@ -9,12 +9,10 @@ package ztimer
  */
 
 import (
+	"edge-server/log"
 	"fmt"
-	"log"
 	"testing"
 	"time"
-
-	"github.com/aceld/zinx/zlog"
 )
 
 //触发函数
@@ -32,7 +30,7 @@ func TestNewTimerScheduler(t *testing.T) {
 		f := NewDelayFunc(foo, []interface{}{i, i * 3})
 		tID, err := timerScheduler.CreateTimerAfter(f, time.Duration(3*i)*time.Millisecond)
 		if err != nil {
-			zlog.Error("create timer error", tID, err)
+			log.Error("create timer error", tID, err)
 			break
 		}
 	}
@@ -58,7 +56,7 @@ func TestNewAutoExecTimerScheduler(t *testing.T) {
 		f := NewDelayFunc(foo, []interface{}{i, i * 3})
 		tID, err := autoTS.CreateTimerAfter(f, time.Duration(3*i)*time.Millisecond)
 		if err != nil {
-			zlog.Error("create timer error", tID, err)
+			log.Error("create timer error", tID, err)
 			break
 		}
 	}
@@ -80,7 +78,7 @@ func TestCancelTimerScheduler(t *testing.T) {
 	if nil != err {
 		t.Log("Scheduler.CreateTimerAfter(f1, time.Duration(3)*time.Second)", "err：", err)
 	}
-	log.Printf("timerID1=%d ,timerID2=%d\n", timerID1, timerID2)
+	log.Error("timerID1=%d ,timerID2=%d\n", timerID1, timerID2)
 	Scheduler.CancelTimer(timerID1) //删除timerID1
 
 	//阻塞等待
