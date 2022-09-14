@@ -1,4 +1,4 @@
-module edge-server
+module github.com/dxk1/edge-server
 
 go 1.16
 
