@@ -1,8 +1,8 @@
 package main
 
 import (
-	"edge-server/examples/zinx_version_ex/protoDemo/pb"
 	"fmt"
+	"github.com/dxk1/edge-server/examples/zinx_version_ex/protoDemo/pb"
 	"github.com/golang/protobuf/proto"
 )
 

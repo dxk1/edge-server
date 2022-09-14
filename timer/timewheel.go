@@ -7,9 +7,9 @@ package ztimer
  */
 
 import (
-	"edge-server/log"
 	"errors"
 	"fmt"
+	"github.com/dxk1/edge-server/log"
 	"sync"
 	"time"
 )

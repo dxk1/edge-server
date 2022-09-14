@@ -6,8 +6,8 @@ package ztimer
 * @Mail: danbing.at@gmail.com
  */
 import (
-	"edge-server/log"
 	"fmt"
+	"github.com/dxk1/edge-server/log"
 	"reflect"
 )
 

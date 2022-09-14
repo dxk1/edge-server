@@ -10,7 +10,7 @@ package ztimer
  */
 
 import (
-	"edge-server/log"
+	"github.com/dxk1/edge-server/log"
 	"math"
 	"sync"
 	"time"

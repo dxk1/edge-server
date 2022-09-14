@@ -10,9 +10,9 @@
 package utils
 
 import (
-	"edge-server/log"
-	"edge-server/service"
 	"encoding/json"
+	"github.com/dxk1/edge-server/log"
+	"github.com/dxk1/edge-server/service"
 	"io/ioutil"
 	"os"
 )

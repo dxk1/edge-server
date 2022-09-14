@@ -1,9 +1,9 @@
 package main
 
 import (
-	net2 "edge-server/net"
-	"edge-server/service"
 	"fmt"
+	net2 "github.com/dxk1/edge-server/net"
+	"github.com/dxk1/edge-server/service"
 )
 
 //ping test 自定义路由

@@ -1,9 +1,9 @@
 package net
 
 import (
-	"edge-server/service"
 	"errors"
 	"fmt"
+	"github.com/dxk1/edge-server/service"
 	"sync"
 )
 

@@ -1,7 +1,7 @@
 package main
 
 import (
-	net2 "edge-server/net"
+	net2 "github.com/dxk1/edge-server/net"
 )
 
 //Server 模块的测试函数
