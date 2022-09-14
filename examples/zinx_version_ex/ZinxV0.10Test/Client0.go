@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	"github.com/aceld/zinx/znet"
 	"io"
 	"net"
 	"time"
 
-	"github.com/aceld/zinx/znet"
+	net2 "github.com/dxk1/edge-server/net"
 )
 
 /*
@@ -26,7 +27,7 @@ func main() {
 
 	for {
 		//发封包message消息
-		dp := znet.NewDataPack()
+		dp := net2.NewDataPack()
 		msg, _ := dp.Pack(znet.NewMsgPackage(0, []byte("Zinx V0.8 Client0 Test Message")))
 		_, err := conn.Write(msg)
 		if err != nil {
