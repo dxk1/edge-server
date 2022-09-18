@@ -1,4 +1,4 @@
-// Package ziface 主要提供zinx全部抽象层接口定义.
+// Package service 主要提供zinx全部抽象层接口定义.
 // 包括:
 //		IServer 服务mod接口
 //		IRouter 路由mod接口

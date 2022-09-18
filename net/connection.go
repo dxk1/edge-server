@@ -120,6 +120,10 @@ func (c *Connection) StartWsWriter() {
 					fmt.Println("Send Buff Data error:, ", err, " Conn Writer exit")
 					return
 				}
+
+				if _, exit := c.property["PrintSendData"]; exit {
+					fmt.Println("Send Buff Data:, ", string(data))
+				}
 			} else {
 				fmt.Println("msgBuffChan is Closed")
 				break
@@ -329,7 +333,7 @@ func (c *Connection) SendWsMsg(data []byte) error {
 func (c *Connection) SendBuffMsg(msgID uint32, data []byte) error {
 	c.RLock()
 	defer c.RUnlock()
-	idleTimeout := time.NewTimer(5 * time.Millisecond)
+	idleTimeout := time.NewTimer(100 * time.Millisecond)
 	defer idleTimeout.Stop()
 
 	if c.isClosed == true {
