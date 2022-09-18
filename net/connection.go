@@ -262,7 +262,7 @@ func (c *Connection) WsStart(cID *uint32) {
 	//2 开启用于写回客户端数据流程的Goroutine
 	go c.StartWsWriter()
 	//按照用户传递进来的创建连接时需要处理的业务，执行钩子方法
-	//c.TCPServer.CallOnConnStart(c)
+	c.TCPServer.CallOnConnStart(c)
 
 	select {
 	case <-c.ctx.Done():
@@ -425,7 +425,7 @@ func (c *Connection) finalizer() {
 
 func (c *Connection) wsfinalizer() {
 	//如果用户注册了该链接的关闭回调业务，那么在此刻应该显示调用
-	//c.TCPServer.CallOnConnStop(c)
+	c.TCPServer.CallOnConnStop(c)
 
 	c.Lock()
 	defer c.Unlock()
