@@ -16,7 +16,7 @@ func (this *HelloZinxRouter) Handle(request service.IRequest) {
 	//先读取客户端的数据，再回写ping...ping...ping
 	log.Debug("recv from client : msgId=", request.GetMsgID(), ", data=", string(request.GetData()))
 
-	err := request.GetConnection().SendBuffMsg(1, []byte("Hello Zinx Router V0.10"))
+	err := request.GetConnection().SendWsMsg([]byte("Hello Zinx Router V0.10"))
 	if err != nil {
 		log.Error(err)
 	}

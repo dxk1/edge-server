@@ -22,7 +22,7 @@ func DoConnectionBegin(conn service.IConnection) {
 	conn.SetProperty("Name", "Aceld")
 	conn.SetProperty("Home", "https://www.kancloud.cn/@aceld")
 
-	err := conn.SendMsg(2, []byte("DoConnection BEGIN..."))
+	err := conn.SendWsMsg([]byte("DoConnection BEGIN..."))
 	if err != nil {
 		log.Error(err)
 	}

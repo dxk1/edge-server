@@ -51,7 +51,7 @@ func NewConnection(server service.IServer, conn *net.TCPConn, connID uint32, msg
 		isClosed:    false,
 		MsgHandler:  msgHandler,
 		msgBuffChan: make(chan []byte, utils.GlobalObject.MaxMsgChanLen),
-		property:    nil,
+		property:    make(map[string]interface{}),
 	}
 
 	//将新创建的Conn添加到链接管理中
@@ -69,7 +69,7 @@ func NewWsConnection(server service.IServer, conn *websocket.Conn, connID uint32
 		isClosed:    false,
 		MsgHandler:  msgHandler,
 		msgBuffChan: make(chan []byte, utils.GlobalObject.MaxMsgChanLen),
-		property:    nil,
+		property:    make(map[string]interface{}),
 	}
 
 	//将新创建的Conn添加到链接管理中
